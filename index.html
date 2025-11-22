@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a class="btn" href="{{ url_for('add_task') }}">+ New Task</a>
+
+<div class="task-grid">
+    {% for task in tasks %}
+    <div class="task-card {% if task.completed %}completed{% endif %}">
+        <h3>{{ task.title }}</h3>
+
+        {% if task.due_date %}
+        <p class="meta">Due: {{ task.due_date }}</p>
+        {% endif %}
+
+        {% if task.description %}
+        <p class="desc">{{ task.description }}</p>
+        {% endif %}
+
+        <div class="actions">
+            <form action="{{ url_for('toggle', task_id=task.id) }}" method="post">
+                <button class="small">
+                    {% if task.completed %}Undo{% else %}Done{% endif %}
+                </button>
+            </form>
+
+            <a href="{{ url_for('edit_task', task_id=task.id) }}" class="small">Edit</a>
+
+            <form action="{{ url_for('delete_task', task_id=task.id) }}" method="post">
+                <button class="small danger">Delete</button>
+            </form>
+
+            <a class="small info" href="{{ url_for('history', task_id=task.id) }}">History</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

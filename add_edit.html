@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ action }} Task</h2>
+
+<form method="post" class="task-form">
+
+    <label>Title
+        <input type="text" name="title" required value="{{ task.title if task }}">
+    </label>
+
+    <label>Description
+        <textarea name="description">{{ task.description if task }}</textarea>
+    </label>
+
+    <label>Due Date
+        <input type="date" name="due_date" value="{{ task.due_date if task }}">
+    </label>
+
+    {% if task %}
+    <label class="inline">
+        <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
+        Mark as Completed
+    </label>
+    {% endif %}
+
+    <button class="btn primary">{{ action }}</button>
+</form>
+
+{% endblock %}

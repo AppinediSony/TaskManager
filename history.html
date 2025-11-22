@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Task History</h2>
+
+<ul class="history-list">
+    {% for h in task.history %}
+    <li>
+        <b>{{ h.action }}</b> — {{ h.time }}
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="/" class="btn">Back</a>
+
+{% endblock %}
