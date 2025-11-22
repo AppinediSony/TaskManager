@@ -34,7 +34,7 @@ Task-Manager is a simple and intuitive web application built with **Flask** and 
 
 **1. Clone the repository:**
 
-```bash
+--bash
 git clone https://github.com/YourUsername/Task-Manager.git
 cd Task-Manager
 
